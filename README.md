@@ -2,12 +2,15 @@
 
 ## Project Information
 
-Please complete the following before submitting your repository.
-
-**Project Name:**  
+**Project Name:**  Client Web
 **Team Name:**  
-**Cohort / Sprint:**  
 **Team Members:**  
+- Lasia Koppaka - Backend
+- Dhanushka Magmmudalige - Full stack
+- Aharon - FrontEnd
+- Ryan Weidenbenner - Data
+- Troy Adamson - CS
+
 **Tech Stack:** 
 
 ## Project Overview
