@@ -4,7 +4,7 @@ function App() {
 
   return (
     <>
-        <h1>Cllient Web Dashboard</h1>
+        <h1>Client Web Dashboard</h1>
     </>
   )
 }
