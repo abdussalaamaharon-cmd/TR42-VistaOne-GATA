@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FieldPortal Wireframe</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f5f6f8;
+}
+
+.container {
+  display: flex;
+}
+
+.sidebar {
+  width: 220px;
+  background: #1f2a37;
+  color: white;
+  height: 100vh;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  font-size: 18px;
+}
+
+.sidebar button {
+  display: block;
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+  background: none;
+  border: none;
+  color: white;
+  text-align: left;
+  cursor: pointer;
+}
+
+.sidebar button:hover {
+  background: #374151;
+}
+
+.main {
+  flex: 1;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  padding: 16px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.hidden {
+  display: none;
+}
+
+input, button, select {
+  padding: 10px;
+  margin: 6px 0;
+  width: 100%;
+}
+
+button.primary {
+  background: #2563eb;
+  color: white;
+  border: none;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.open { background: #dbeafe; }
+.closed { background: #e5e7eb; }
+.pending { background: #fef3c7; }
+.approved { background: #d1fae5; }
+
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div id="login" class="card" style="max-width:400px;margin:60px auto;">
+  <h2>Welcome back</h2>
+  <input placeholder="Email"/>
+  <input type="password" placeholder="Password"/>
+  <button class="primary" onclick="showApp()">Sign in</button>
+  <p><a href="#" onclick="showAccess()">Request access</a></p>
+</div>
+
+<!-- REQUEST ACCESS -->
+<div id="access" class="card hidden" style="max-width:400px;margin:60px auto;">
+  <h2>Request Access</h2>
+  <input placeholder="First name"/>
+  <input placeholder="Last name"/>
+  <input placeholder="Work email"/>
+  <input placeholder="Company"/>
+  <input placeholder="Role"/>
+  <input type="password" placeholder="Password"/>
+  <button class="primary" onclick="showLogin()">Submit</button>
+</div>
+
+<!-- APP -->
+<div id="app" class="container hidden">
+
+  <div class="sidebar">
+    <h2>FieldPortal</h2>
+    <button onclick="navigate('dashboard')">Dashboard</button>
+    <button onclick="navigate('jobs')">Jobs</button>
+    <button onclick="navigate('workorders')">Work Orders</button>
+    <button onclick="navigate('invoices')">Invoices</button>
+    <button onclick="navigate('contracts')">Contracts/Vendors</button>
+  </div>
+
+  <div class="main">
+
+    <!-- DASHBOARD -->
+    <div id="dashboard">
+      <div class="card">
+        <h3>Summary</h3>
+        <p>Active Jobs: 4</p>
+        <p>Invoices Pending: 3</p>
+      </div>
+    </div>
+
+    <!-- JOBS -->
+    <div id="jobs" class="hidden">
+      <div class="card">
+        <h3>Jobs</h3>
+        <table class="table">
+          <tr><th>Name</th><th>Status</th></tr>
+          <tr><td>Job Type 1</td><td><span class="badge open">Active</span></td></tr>
+          <tr><td>Job Type 2</td><td><span class="badge open">Active</span></td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- WORK ORDERS -->
+    <div id="workorders" class="hidden">
+      <div class="card">
+        <h3>Work Orders</h3>
+        <table class="table">
+          <tr><th>ID</th><th>Status</th></tr>
+          <tr><td>WO-001</td><td><span class="badge open">Open</span></td></tr>
+          <tr><td>WO-002</td><td><span class="badge closed">Closed</span></td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- INVOICES -->
+    <div id="invoices" class="hidden">
+      <div class="card">
+        <h3>Invoices</h3>
+        <table class="table">
+          <tr><th>ID</th><th>Status</th></tr>
+          <tr><td>INV-001</td><td><span class="badge pending">Pending</span></td></tr>
+          <tr><td>INV-002</td><td><span class="badge approved">Approved</span></td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- CONTRACTS -->
+    <div id="contracts" class="hidden">
+      <div class="card">
+        <h3>Contracts & Vendors</h3>
+        <p>Vendor A - Active</p>
+        <p>Vendor B - Pending</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function showApp() {
+  document.getElementById("login").classList.add("hidden");
+  document.getElementById("app").classList.remove("hidden");
+}
+
+function showAccess() {
+  document.getElementById("login").classList.add("hidden");
+  document.getElementById("access").classList.remove("hidden");
+}
+
+function showLogin() {
+  document.getElementById("access").classList.add("hidden");
+  document.getElementById("login").classList.remove("hidden");
+}
+
+function navigate(section) {
+  const sections = ["dashboard", "jobs", "workorders", "invoices", "contracts"];
+  sections.forEach(s => document.getElementById(s).classList.add("hidden"));
+  document.getElementById(section).classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>
